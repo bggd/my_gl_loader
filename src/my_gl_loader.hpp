@@ -1,5 +1,5 @@
 using GLenum = uint32_t;
-using GLboolean = bool;
+using GLboolean = uint8_t;
 using GLbitfield = uint32_t;
 using GLvoid = void;
 using GLuint = uint32_t;
