@@ -2,6 +2,7 @@ using GLenum = uint32_t;
 using GLboolean = uint8_t;
 using GLbitfield = uint32_t;
 using GLvoid = void;
+using GLushort = uint16_t;
 using GLuint = uint32_t;
 using GLint = int32_t;
 using GLsizei = int32_t;
@@ -133,6 +134,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, GenBuffers, GLsizei, GLuint*) \
   MYGLLOADER_GL_DEF(void, BindBuffer, GLenum, GLuint) \
   MYGLLOADER_GL_DEF(void, EnableVertexAttribArray, GLuint) \
+  MYGLLOADER_GL_DEF(void, DisableVertexAttribArray, GLuint) \
   MYGLLOADER_GL_DEF(void, VertexAttribPointer, GLuint, GLint, GLenum, GLboolean, GLsizei, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, BufferData, GLenum, GLsizeiptr, const GLvoid*, GLenum) \
   MYGLLOADER_GL_DEF(void, DrawArrays, GLenum, GLint, GLsizei) \
