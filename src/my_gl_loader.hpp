@@ -97,7 +97,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
 #define MYGLLOADER_GL_DEF(ret, name, ...) ret (*gl##name)(__VA_ARGS__) = NULL;
 
 #define MYGLLOADER_GL_DEF_LIST \
-  MYGLLOADER_GL_DEF(void, DebugMessageCallback, MYGLLOADER_DEBUG_PROC, void*) \
+  MYGLLOADER_GL_DEF(GLenum, GetError, void) \
   MYGLLOADER_GL_DEF(void, Enable, GLenum) \
   MYGLLOADER_GL_DEF(void, Disable, GLenum) \
   MYGLLOADER_GL_DEF(void, Viewport, GLint, GLint, GLsizei, GLsizei) \
@@ -120,6 +120,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, GetProgramiv, GLuint, GLenum, GLint*) \
   MYGLLOADER_GL_DEF(void, GetProgramInfoLog, GLuint, GLsizei, GLsizei*, GLchar*) \
   MYGLLOADER_GL_DEF(GLint, GetUniformLocation, GLuint, const GLchar*) \
+  MYGLLOADER_GL_DEF(void, GetUniformfv, GLuint, GLint, GLfloat*) \
   MYGLLOADER_GL_DEF(void, UniformMatrix4fv, GLint, GLsizei, GLboolean, const GLfloat*) \
   MYGLLOADER_GL_DEF(void, Uniform1i, GLint, GLint) \
   MYGLLOADER_GL_DEF(void, BindFragDataLocation, GLuint, GLuint, const GLchar*) \
@@ -139,6 +140,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, BufferData, GLenum, GLsizeiptr, const GLvoid*, GLenum) \
   MYGLLOADER_GL_DEF(void, DrawArrays, GLenum, GLint, GLsizei) \
   MYGLLOADER_GL_DEF(void, DrawElements, GLenum, GLsizei, GLenum, const GLvoid*) \
+  MYGLLOADER_GL_DEF(void, DeleteBuffers, GLsizei, const GLuint*) \
   /* Texture */ \
   MYGLLOADER_GL_DEF(void, GenTextures, GLsizei, GLuint*) \
   MYGLLOADER_GL_DEF(void, BindTexture, GLenum, GLuint) \
@@ -147,8 +149,15 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, TexImage2D, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, ActiveTexture, GLenum)
 
+#ifdef MYGLLOADER_DEBUG
+#define MYGLLOADER_GL_DEF_LIST_DEBUG \
+MYGLLOADER_GL_DEF(void, DebugMessageCallback, MYGLLOADER_DEBUG_PROC, void*)
+#else
+#define MYGLLOADER_GL_DEF_LIST_DEBUG
+#endif
 
 MYGLLOADER_GL_DEF_LIST
+MYGLLOADER_GL_DEF_LIST_DEBUG
 
 #undef MYGLLOADER_GL_DEF
 
