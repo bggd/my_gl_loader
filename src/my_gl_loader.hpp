@@ -147,7 +147,8 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, TexParameteri, GLenum, GLenum, GLint) \
   MYGLLOADER_GL_DEF(void, PixelStorei, GLenum, GLint) \
   MYGLLOADER_GL_DEF(void, TexImage2D, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid*) \
-  MYGLLOADER_GL_DEF(void, ActiveTexture, GLenum)
+  MYGLLOADER_GL_DEF(void, ActiveTexture, GLenum) \
+  MYGLLOADER_GL_DEF(void, DeleteTextures, GLsizei, const GLuint*)
 
 #ifdef MYGLLOADER_DEBUG
 #define MYGLLOADER_GL_DEF_LIST_DEBUG \
@@ -162,3 +163,4 @@ MYGLLOADER_GL_DEF_LIST_DEBUG
 #undef MYGLLOADER_GL_DEF
 
 bool my_gl_loader();
+void my_gl_loader_enable_debug_output();
