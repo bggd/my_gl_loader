@@ -11,6 +11,7 @@ using GLclampf = float;
 
 using GLchar = char;
 
+using GLintptr = intptr_t;
 using GLsizeiptr = ptrdiff_t;
 
 #define GL_FALSE 0
@@ -21,6 +22,7 @@ using GLsizeiptr = ptrdiff_t;
 #define GL_UNSIGNED_INT 0x1405
 #define GL_FLOAT 0x1406
 
+#define GL_LINES 0x0001
 #define GL_TRIANGLES 0x0004
 
 #define GL_DEBUG_OUTPUT 0x92E0
@@ -138,6 +140,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, DisableVertexAttribArray, GLuint) \
   MYGLLOADER_GL_DEF(void, VertexAttribPointer, GLuint, GLint, GLenum, GLboolean, GLsizei, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, BufferData, GLenum, GLsizeiptr, const GLvoid*, GLenum) \
+  MYGLLOADER_GL_DEF(void, BufferSubData, GLenum, GLintptr, GLsizeiptr, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, DrawArrays, GLenum, GLint, GLsizei) \
   MYGLLOADER_GL_DEF(void, DrawElements, GLenum, GLsizei, GLenum, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, DeleteBuffers, GLsizei, const GLuint*) \
