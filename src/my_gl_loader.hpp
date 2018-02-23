@@ -55,6 +55,8 @@ using GLsizeiptr = ptrdiff_t;
 #define GL_FRAGMENT_SHADER 0x8B30
 #define GL_VERTEX_SHADER 0x8B31
 
+#define GL_BUFFER_SIZE 0x8764
+
 #define GL_ARRAY_BUFFER 0x8892
 #define GL_ELEMENT_ARRAY_BUFFER 0x8893
 
@@ -144,6 +146,7 @@ typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, 
   MYGLLOADER_GL_DEF(void, DrawArrays, GLenum, GLint, GLsizei) \
   MYGLLOADER_GL_DEF(void, DrawElements, GLenum, GLsizei, GLenum, const GLvoid*) \
   MYGLLOADER_GL_DEF(void, DeleteBuffers, GLsizei, const GLuint*) \
+  MYGLLOADER_GL_DEF(void,  GetBufferParameteriv, GLenum, GLenum, GLint*) \
   /* Texture */ \
   MYGLLOADER_GL_DEF(void, GenTextures, GLsizei, GLuint*) \
   MYGLLOADER_GL_DEF(void, BindTexture, GLenum, GLuint) \

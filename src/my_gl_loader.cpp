@@ -72,7 +72,7 @@ my_gl_loader_debug_output_cb(GLenum source, GLenum type, GLuint id, GLenum sever
 bool my_gl_loader()
 {
 #define MYGLLOADER_GL_DEF(ret, name, ...) \
-  gl##name = (decltype(gl##name))SDL_GL_GetProcAddress("gl"#name); \
+  gl##name = (decltype(gl##name))OSMesaGetProcAddress("gl"#name); \
   if (gl##name == NULL) { return false; }
 
   MYGLLOADER_GL_DEF_LIST
