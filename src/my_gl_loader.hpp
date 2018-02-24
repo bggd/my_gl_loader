@@ -98,7 +98,26 @@ using GLsizeiptr = ptrdiff_t;
 
 typedef void (*MYGLLOADER_DEBUG_PROC) (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, void*);
 
+#ifdef MYGLLOADER_OSMESA
+#define OSMESA_RGBA GL_RGBA
+#define OSMESA_RGB GL_RGB
+#define OSMESA_FORMAT 0x22
+#define OSMESA_DEPTH_BITS 0x30
+#define OSMESA_PROFILE 0x33
+#define OSMESA_CORE_PROFILE 0x34
+#define OSMESA_CONTEXT_MAJOR_VERSION 0x36
+#define OSMESA_CONTEXT_MINOR_VERSION 0x37
+extern "C" {
+  typedef struct os_mesa_context* OSMesaContext;
+  extern OSMesaContext OSMesaCreateContextAttribs(const int*, OSMesaContext);
+  extern GLboolean OSMesaMakeCurrent(OSMesaContext, void*, GLenum type, GLsizei, GLsizei);
+  extern void OSMesaDestroyContext(OSMesaContext);
+  
+}
+#define MYGLLOADER_GL_DEF(ret, name, ...) extern "C" ret gl##name(__VA_ARGS__);
+#else
 #define MYGLLOADER_GL_DEF(ret, name, ...) ret (*gl##name)(__VA_ARGS__) = NULL;
+#endif
 
 #define MYGLLOADER_GL_DEF_LIST \
   MYGLLOADER_GL_DEF(GLenum, GetError, void) \
