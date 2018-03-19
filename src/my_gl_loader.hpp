@@ -1,3 +1,7 @@
+//#include <stdint.h>
+//#include <stdlib.h>
+//#include <assert.h>
+
 using GLenum = uint32_t;
 using GLboolean = uint8_t;
 using GLbitfield = uint32_t;
